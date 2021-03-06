@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Task 2.1 -->
+    <section class="tasks">
+        <div class="container">
+            <div class="task2-1">
+                <h2 class="task__title">2.1 Найти корни квадратного уравнения</h2>
+                <h3 class="task__info">Дано уравнение ax<sup>2</sup> - bx + c = 0</h3>
+                <input class="task__input" id="eq-a" type="text" placeholder="Введите a">
+                <input class="task__input" id="eq-b" type="text" placeholder="Введите b">
+                <input class="task__input" id="eq-c" type="text" placeholder="Введите c">
+                <button type="button" id="eq-btn">Найти корни уравнения</button>
+                <h3 class="task__subinfo"  id="currentEquation">ax<sup>2</sup> - bx + c = 0</h3>
+                <h3 class="task__result" id="resultEqRoot"></h3>
+            </div>
+        </div>
+    </section>
+    <!-- Task 2.2 -->
+    <section class="tasks">
+        <div class="container">
+            <div class="task2-2">
+                <h2 class="task__title">2.2 Проверка чисел на тройку пифагора</h2>
+                <input type="text" class="task__input" id="number1" placeholder="Введите первое число">
+                <input type="text" class="task__input" id="number2" placeholder="Введите второе число">
+                <input type="text" class="task__input" id="number3" placeholder="Введите третие число">
+                <button type="button" id="btnPifagor">Проверить числа на тройку пифагора</button>
+                <h3 class="task__result" id="pifagorResult">Да, числа пифагора</h3>
+            </div>
+        </div>
+    </section>
+    <!-- Task 2.3 -->
+    <section class="tasks">
+        <div class="container">
+            <div class="task2-3">
+                <h2 class="task__title">2.3 Найти все делители числа n</h2>
+                <input type="text" class="task__input" id="numberForDividers" placeholder="Введите число">
+                <button type="button" id="btnDividers">Найти все делители числа</button>
+                <h3 class="task__result" id="dividersResult"></h3>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
