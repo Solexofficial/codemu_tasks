@@ -97,28 +97,48 @@ const dividersResult = document.getElementById('dividersResult');
 
 const findDividers = num => {
     const dividers = [];
-    for (let i = 0; i <= num; i++) {
+    for (let i = 0; i <= (num / 2); i++) {
         if (num % i == 0) {
             dividers.push(i);
         }
     }
+    dividers.push(num);
     dividersResult.innerHTML = dividers.join(', ');
 }
 
 btnDividers.addEventListener('click', function() {
     findDividers(strToNum(numberForDividers.value));
-})
+});
 
 //task 2.4 Вывести общий список делителей двух чисел
+const inputNum1ForDeviders = document.getElementById('input_num1ForDividers');
+const inputNum2ForDeviders = document.getElementById('input_num2ForDividers');
+const btnDividers2 = document.getElementById('btnDividers2');
+const dividersResult2 = document.getElementById('dividersResult2');
 
+const findDividers2 = (num1, num2) => {
+    const dividersNum1 = [];
+    const dividersNum2 = [];
+    
+    for (let i = 0; i <= num1 / 2; i++) {
+      if (num1 % i === 0) {
+        dividersNum1.push(i);
+      }
+    }
+    dividersNum1.push(num1);
 
+    for (let j = 0; j <= num2 / 2; j++) {
+      if (num2 % j === 0) {
+        dividersNum2.push(j);
+      }
+    }
+    dividersNum2.push(num2);
+  
+    const commonDivisors = dividersNum1.filter(value => dividersNum2.includes(value));
+    dividersResult2.innerHTML = commonDivisors.join(', ');
+}
 
-
-
-
-
-
-
-
-
+btnDividers2.addEventListener('click', function() {
+    findDividers2(strToNum(inputNum1ForDeviders.value), strToNum(inputNum2ForDeviders.value));
+});
 
