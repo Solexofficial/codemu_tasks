@@ -1,19 +1,19 @@
 // ===== Section Tasks 1 =====
 // task 1.1 Найти площадь и периметр квадрата
-const SquareSP = width => {
+const squareSP = width => {
     const squareArea = width ** 2;
     const squarePerimetr = 4 * width;
     console.log('Площадь квадрата =', squareArea, 'Периметр квадрата =', squarePerimetr);
 }
-SquareSP(5);
+squareSP(5);
 
 // task 1.2 Найти площадь и периметр прямоугольника
-const RectangleSP = (width, height) => {
+const rectangleSP = (width, height) => {
     const rectangleArea = width * height;
     const rectanglePerimetr = 2 * (width + height);
     console.log('Площадь прямоугольника =', rectangleArea, 'Периметр прямоугольника =', rectanglePerimetr);
 }
-RectangleSP(5,4);
+rectangleSP(5,4);
 
 // task 1.3 Найти площадь круга и длину окружности
 const circleSL = radius => {
@@ -119,7 +119,7 @@ const dividersResult2 = document.getElementById('dividersResult2');
 const findDividers2 = (num1, num2) => {
     const dividersNum1 = [];
     const dividersNum2 = [];
-    
+
     for (let i = 0; i <= num1 / 2; i++) {
       if (num1 % i === 0) {
         dividersNum1.push(i);
@@ -133,12 +133,33 @@ const findDividers2 = (num1, num2) => {
       }
     }
     dividersNum2.push(num2);
-  
-    const commonDivisors = dividersNum1.filter(value => dividersNum2.includes(value));
+
+    filterCommonDivisors(dividersNum1, dividersNum2)
+}
+
+const filterCommonDivisors = (arr1, arr2) => {
+    const commonDivisors = arr1.filter(value => arr2.includes(value));
     dividersResult2.innerHTML = commonDivisors.join(', ');
 }
 
 btnDividers2.addEventListener('click', function() {
     findDividers2(strToNum(inputNum1ForDeviders.value), strToNum(inputNum2ForDeviders.value));
 });
+
+//task 2.5 Найти наибольший общий делитель
+const inputNum1ForMaxDividers = document.getElementById('input_num1ForMaxDividers');
+const inputNum2ForMaxDividers = document.getElementById('input_num2ForMaxDividers');
+const btnMaxDividers = document.getElementById('btnMaxDividers');
+const maxDividersResult = document.getElementById('maxDividersResult');
+
+const maxDividers = (num1, num2) => {
+    findDividers2(strToNum(num1.value), strToNum(num2.value));
+    const maxNumDividers = Math.max(...f1);
+    console.log(maxNumDividers);
+    maxDividersResult.innerHTML = maxNumDividers;
+}
+
+btnMaxDividers.addEventListener('click', () => {
+    maxDividers(inputNum1ForMaxDividers, inputNum2ForMaxDividers);
+})
 
