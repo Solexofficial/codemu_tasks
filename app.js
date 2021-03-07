@@ -94,72 +94,45 @@ const numberForDividers = document.getElementById('numberForDividers');
 const btnDividers = document.getElementById('btnDividers');
 const dividersResult = document.getElementById('dividersResult');
 
-
 const findDividers = num => {
-    const dividers = [];
+    const arrDividers = [];
     for (let i = 0; i <= (num / 2); i++) {
         if (num % i == 0) {
-            dividers.push(i);
+            arrDividers.push(i);
         }
     }
-    dividers.push(num);
-    dividersResult.innerHTML = dividers.join(', ');
+    arrDividers.push(num);
+    return arrDividers;
 }
 
 btnDividers.addEventListener('click', function() {
-    findDividers(strToNum(numberForDividers.value));
+    dividersResult.innerHTML = findDividers(strToNum(numberForDividers.value)).join(', ');
 });
 
-//task 2.4 Вывести общий список делителей двух чисел
+
+
+//task 2.4, 2.5, 2.6 Вывести общий список делителей двух чисел, max делитель, вывести минимальное число которое делится на эти числа.
 const inputNum1ForDeviders = document.getElementById('input_num1ForDividers');
 const inputNum2ForDeviders = document.getElementById('input_num2ForDividers');
-const btnDividers2 = document.getElementById('btnDividers2');
-const dividersResult2 = document.getElementById('dividersResult2');
-
-const findDividers2 = (num1, num2) => {
-    const dividersNum1 = [];
-    const dividersNum2 = [];
-
-    for (let i = 0; i <= num1 / 2; i++) {
-      if (num1 % i === 0) {
-        dividersNum1.push(i);
-      }
-    }
-    dividersNum1.push(num1);
-
-    for (let j = 0; j <= num2 / 2; j++) {
-      if (num2 % j === 0) {
-        dividersNum2.push(j);
-      }
-    }
-    dividersNum2.push(num2);
-
-    filterCommonDivisors(dividersNum1, dividersNum2)
-}
-
-const filterCommonDivisors = (arr1, arr2) => {
-    const commonDivisors = arr1.filter(value => arr2.includes(value));
-    dividersResult2.innerHTML = commonDivisors.join(', ');
-}
-
-btnDividers2.addEventListener('click', function() {
-    findDividers2(strToNum(inputNum1ForDeviders.value), strToNum(inputNum2ForDeviders.value));
-});
-
-//task 2.5 Найти наибольший общий делитель
-const inputNum1ForMaxDividers = document.getElementById('input_num1ForMaxDividers');
-const inputNum2ForMaxDividers = document.getElementById('input_num2ForMaxDividers');
-const btnMaxDividers = document.getElementById('btnMaxDividers');
+const btnCommonDividers = document.getElementById('btnCommonDividers');
+const dividersCommonResult = document.getElementById('dividersCommonResult');
 const maxDividersResult = document.getElementById('maxDividersResult');
+const minNumberResult = document.getElementById('minNumberResult');
 
-const maxDividers = (num1, num2) => {
-    findDividers2(strToNum(num1.value), strToNum(num2.value));
-    const maxNumDividers = Math.max(...f1);
-    console.log(maxNumDividers);
-    maxDividersResult.innerHTML = maxNumDividers;
+const filterCommonDivisors = (arr1, arr2) => arr1.filter(value => arr2.includes(value))
+const maxDividers = arr => Math.max(...arr)
+const minNumber = (num1, num2, arr) => {
+    const inputMinNumber = Math.min(num1, num2);
+    return arr.includes(inputMinNumber) ? inputMinNumber : 'такого числа нет';
 }
+    
 
-btnMaxDividers.addEventListener('click', () => {
-    maxDividers(inputNum1ForMaxDividers, inputNum2ForMaxDividers);
-})
+btnCommonDividers.addEventListener('click', () => {
+    const dividersNum1 = findDividers(strToNum(inputNum1ForDeviders.value));
+    const dividersNum2 = findDividers(strToNum(inputNum2ForDeviders.value));
+    const filterDividersArr = filterCommonDivisors(dividersNum1, dividersNum2);
 
+    dividersCommonResult.innerHTML = filterDividersArr.join(', ');
+    maxDividersResult.innerHTML = maxDividers(filterDividersArr);
+    minNumberResult.innerHTML = minNumber(inputNum1ForDeviders.value, inputNum2ForDeviders.value, filterDividersArr);
+});
